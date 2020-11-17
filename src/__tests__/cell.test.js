@@ -5,7 +5,7 @@ describe('Cell', () => {
     const cell = new Cell(true);
     expect(cell.alive).toBe(true);
     expect(cell.nextGen).toBe(null);
-    expect(cell.livingNeighbours).toBe(null);
+    expect(cell.livingNeighbours).toBe(NaN);
   });
   it('Sets living neighbours', () => {
     const cell = new Cell(true);
@@ -29,5 +29,17 @@ describe('Cell', () => {
     expect(cell.alive).toBe(true);
     cell.setNextGen();
     expect(cell.alive).toBe(false);
+  });
+  it('Throws exceptions on when neighbours have not calculated', () => {
+    const cell = new Cell(true);
+    expect(() => {
+      cell.calculateNextGen();
+    }).toThrow(new Error('Living neibhours have not been set'));
+  });
+  it('Throws exceptions on when next gen has not been set', () => {
+    const cell = new Cell(true);
+    expect(() => {
+      cell.setNextGen();
+    }).toThrow(new Error('Next gen has not been calculated'));
   });
 });
