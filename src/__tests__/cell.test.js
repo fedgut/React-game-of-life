@@ -30,13 +30,13 @@ describe('Cell', () => {
     cell.setNextGen();
     expect(cell.alive).toBe(false);
   });
-  it('Throws exceptions on when neighbours have not calculated', () => {
+  it('Throws exception when neighbours have not been calculated', () => {
     const cell = new Cell(true);
     expect(() => {
       cell.calculateNextGen();
     }).toThrow(new Error('Living neibhours have not been set'));
   });
-  it('Throws exceptions on when next gen has not been set', () => {
+  it('Throws exception when next gen has not been set', () => {
     const cell = new Cell(true);
     expect(() => {
       cell.setNextGen();
